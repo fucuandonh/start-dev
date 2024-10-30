@@ -1,7 +1,5 @@
 mkdir ~/.backup
-mv ~/.bashrc ~/.backup/
-cp .bashrc ~/
-mv ~/.profile ~/.backup/
-cp .profile ~/
+mv ~/{.bash_aliases,.profile,.bashrc} ~/.backup/
+cp bash/** ~/
 cp -r .m2/ ~/
 cp -r .util/ ~/
