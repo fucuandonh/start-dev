@@ -1,0 +1,19 @@
+#!/bin/bash
+create_file() {
+    if [ -f ~/dev/fuch/start-dev/.util/artifact/const/.apx ]; then
+        rm ~/dev/fuch/start-dev/.util/artifact/const/.apx
+    fi
+
+    echo '#!/bin/bash' > ~/dev/fuch/start-dev/.util/artifact/const/.apx
+}
+
+complete_file() {
+    apx_keys=("ARTIFACTORY_USER" "ARTIFACTORY_API_KEY" "ARTIFACTORY_REPOSITORY" "ARTIFACTORY_PLUGIN")
+    apx_values=("afafgf" "aseqaf3h" "whwb" "shwet")
+
+    if [ ${#apx_keys[@]} -eq ${#apx_values[@]} ]; then
+        for ((i=0; i<${#apx_keys[@]}; i++)); do
+            echo "${apx_keys[$i]}=${apx_values[$i]}" >> ~/dev/fuch/start-dev/.util/artifact/const/.apx
+        done
+    fi
+}
