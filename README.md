@@ -1,2 +1,2 @@
 # start-dev
-Peoject to start any new ubuntu environment in wsl
+Template to work easier using WSL and Ubuntu
