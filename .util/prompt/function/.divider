@@ -1,0 +1,4 @@
+#!/bin/bash
+arrow() { echo "$(foreground green)$(icon arrow)$(space)$(space)$(foreground none)"; }
+paper() { echo "$(tab)$(foreground semigray)$(icon paper)$(tab)$(foreground seminone)"; }
+folder_i() { echo "$(tab)$(foreground semiyellow)$(icon folder)$(double_space)$(foreground seminone)"; }

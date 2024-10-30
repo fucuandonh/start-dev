@@ -1,0 +1,23 @@
+#!/bin/bash
+source /home/fuch/.util/prompt/function/.divider
+source /home/fuch/.util/prompt/function/.folder
+source /home/fuch/.util/prompt/function/.string
+
+foreground() { echo "$(get_color $1)"; }
+colon() { echo "$(get_chars colon)"; }
+space() { echo "$(get_chars space)"; }
+spaces() {
+    temp=""
+    for i in $(seq 1 1 $1); do
+        temp+="$(space)"
+    done
+    echo "${temp}"
+}
+double_space() { echo "$(spaces 2)"; }
+double_space_size() { echo 2; }
+tab() { echo "$(spaces 3)"; }
+tab_size() { echo 3; }
+icon_size() { echo 2; }
+left_parentheses() { echo "$(get_chars left_par)"; }
+right_parentheses() { echo "$(get_chars right_par)"; }
+icon() { echo "$(get_icon $1)"; }

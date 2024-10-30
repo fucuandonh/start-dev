@@ -1,0 +1,18 @@
+#!/bin/bash
+are_equal_strings() {
+    if [[ $1 == $2 ]]; then 
+        return 0
+    else 
+        return 1 
+    fi 
+}
+concat_strings() {
+    local -n strings=$1
+    echo "${strings[@]}";
+}
+string_between_chars() {
+    local -n chars=$1
+    local string=$2
+    echo ${chars[0]}$string${chars[1]}; 
+}
+

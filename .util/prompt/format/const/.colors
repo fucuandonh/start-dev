@@ -1,0 +1,19 @@
+#!/bin/bash
+declare -A colors
+set_colors() {
+    colors["none"]="\[\033[00m\]"
+    colors["green"]="\[\033[38;5;112m\]"
+    colors["blue"]="\[\033[38;5;87m\]"
+    colors["yellow"]="\[\033[38;5;227m\]"
+    colors["red"]="\[\033[38;5;173m\]"
+    colors["seminone"]="\e[0m"
+    colors["semiyellow"]="\e[38;5;227m"
+    colors["semigray"]="\e[38;5;173m"
+}
+
+get_color() {
+    set_colors
+    
+    key=$1
+    echo "${colors[$key]}"
+}

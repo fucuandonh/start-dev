@@ -1,0 +1,21 @@
+#!/bin/bash
+branch() {
+    if is_git_repo; then
+        echo "$(colon)$(space)$(foreground blue)$(branch_between_parentheses)$(space)"
+    fi }
+is_git_repo() {
+    if [[ -d ".git" ]]; then
+        return 0
+    else
+        return 1
+    fi }
+branch_name() {
+    bn=""
+    if is_git_repo; then
+        bn=$(gbn)
+    fi
+    echo "${bn}"; }
+branch_with_icon() { 
+    echo "$(icon branch)$(space)$(branch_name)"; }
+branch_between_parentheses() {
+    echo $(left_parentheses)$(branch_with_icon)$(right_parentheses); }

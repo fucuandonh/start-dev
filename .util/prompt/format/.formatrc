@@ -1,0 +1,3 @@
+#!/bin/bash
+source /home/fuch/.util/prompt/format/const/.constrc
+source /home/fuch/.util/prompt/format/var/.varrc

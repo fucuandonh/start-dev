@@ -1,0 +1,16 @@
+#!/bin/bash
+declare -A icons
+set_icons() {
+    icons["arrow"]=""
+    icons["branch"]=""
+    icons["home"]=""
+    icons["folder"]=""
+    icons["paper"]=""
+}
+
+get_icon() { 
+    set_icons
+    
+    key=$1
+    echo "${icons[$key]}"
+}

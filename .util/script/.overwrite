@@ -1,0 +1,11 @@
+#!/bin/bash
+cd() { builtin cd "$@" && update_prompt; }
+git() {
+    command git "$@"
+    
+    args=("checkout" "clone")
+    if [[ " ${args[@]} " =~ " $1 " ]]; then
+        update_prompt
+    fi
+}
+mkdir() { command mkdir "$@" && cd "$1"; }

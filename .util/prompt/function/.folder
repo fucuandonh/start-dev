@@ -1,0 +1,16 @@
+#!/bin/bash
+folder() { echo "$(foreground none)$(name)$(space)"; }
+is_folder_home() {    
+    if are_equal_strings $HOME $PWD; then
+        return 0;
+    else    
+        return 1;
+    fi
+}
+name() {
+    value=$folder_name
+    if is_folder_home; then
+        value=$(get_icon home)$(space)
+    fi
+    echo "${value}"
+}

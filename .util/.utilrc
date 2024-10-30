@@ -1,0 +1,6 @@
+#!/bin/bash
+source /home/fuch/.util/custom/.customrc
+source /home/fuch/.util/prompt/.promptrc
+source /home/fuch/.util/script/.scriptrc
+
+update_prompt() { PS1=$(folder)$(branch)$(arrow); }

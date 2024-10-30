@@ -1,0 +1,22 @@
+#!/bin/bash
+declare -A chars
+set_chars() {
+    chars["colon"]=":"
+    chars["space"]=" "
+    chars["left_par"]="("
+    chars["right_par"]=")"
+    chars["dot"]="."
+    chars["double_dot"]=".."
+}
+
+get_chars() {
+    set_chars
+    
+    keys=("$@")
+    result=()
+    for key in "${keys[@]}"; do
+        result+=("${chars[$key]}")
+    done
+
+    echo "${result[*]}"
+}

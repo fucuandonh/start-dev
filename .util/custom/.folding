@@ -1,0 +1,134 @@
+#!/bin/bash
+lsx() {
+    local terminal_width=$COLUMNS
+    fwc="\e[0m"
+    fyc="\e[38;5;228m"
+    fgc="\e[38;5;251m"
+    
+    oss=3
+    oass="$(spaces $oss)"
+
+    ots=3
+    oats="$(spaces $ots)"
+
+    oics=2
+
+    declare -a records
+    mapfile -t records < <(ls -a)
+
+    folders=()
+    files=()
+    folders_lengths=()
+    files_lengths=()
+    for record in "${records[@]}"; do
+        if [[ ! ("${record}" == "." || "${record}" == "..") ]]; then
+            if [[ -d "${record}" ]]; then
+                icon=""
+                folders+=("${fyc}${icon}${fwc}${oass}${record}")
+                folders_lengths+=($(expr $ots + $oics + $oss + "${#record}"))
+            else
+                icon=""
+                files+=("${fgc}${icon}${fwc}${oass}${record}")
+                files_lengths+=("${#record}")
+            fi
+        fi
+    done
+
+    total_folders=${#folders[@]}
+    total_files=${#files[@]}
+    taa=1
+    if [[ ! ($total_folders -eq $total_files)]]; then
+        tod=$((total_files - total_folders - taa))
+        if [[ $total_folders -lt $total_files ]]; then
+            for i in $(seq 0 1 $tod); do
+                folders+=("${files[$i]}")
+                folders_lengths+=("${files_lengths[$i]}")
+            done
+        fi
+        
+        echo ""
+        for i in $(seq 0 1 $total_files); do
+            toats=$(((terminal_width / 2) - folders_lengths[i]))
+            foats="$(spaces $toats)"
+
+            j=$((i + tod + taa))
+            echo -e "${oats}${folders[$i]}${foats}${files[$j]}"
+        done
+        echo ""
+    fi
+}
+
+
+
+#total_files() { 
+#    declare -a files
+#    mapfile -t files < <(ls -Ap | grep -v /)
+#
+#    echo "${#files[@]}"
+#    for file in "${files[@]}"; do
+#        echo -e "$(paper)${file}"
+#    done
+#}
+#
+#total_files folders
+#
+#total_folders() { 
+#    declare -a folders
+#    mapfile -t folders < <((ls -d */ && ls -d .*/) | xargs -n 1 basename)
+#
+#    IFS=$'\n' folders=($(sort <<<"${folders[*]}"))
+#    unset IFS
+#
+#    echo ""
+#    output_folders=()
+#    for folder in "${folders[@]}"; do
+#        length_name="${#folder}"
+#        output_folder="$(folder_i)${folder}$(spaces $length_name)"
+#        echo -e "${output_folder}"
+#        output_folders+=($output_folder)
+#    done
+#    echo ""
+#}
+#
+#
+#prompt_columns() {
+#    local sections=2;
+#    local col=0;
+#
+#    col=$(expr ${COLUMNS} / ${sections} )
+#    col=$(expr ${col} - $(tab_size))
+#    col=$(expr ${col} - $(icon_size))
+#    col=$(expr ${col} - $(double_space_size))
+#    col=$(expr ${col} - $(tab_size))
+#    echo "${col}"
+#}
+#
+#folders() {
+#    mapfile -t folders < <((ls -d */ && ls -d .*/) | xargs -n 1 basename)
+#    
+#    local tmpi=$(records folders "$(folder_i)")
+#
+#    echo "${tmpi[@]}"
+#}
+#
+#records() {
+#    local -n tmp=$1
+#    IFS=$'\n' tmp=($(sort <<<"${tmp[*]}")) 
+#    unset IFS
+#
+#
+#    available_columns=()
+#    max_lenght_name=0
+#    for record in "${tmp[@]}"; do
+#        record_length_name="${#record}"
+#        free_columns=$(expr $(prompt_columns) - ${record_length_name})
+#        available_columns+=(${free_columns})
+#        output_record="${2}${record}$(spaces ${free_columns})"
+#
+#        if (( record_length_name > max_lenght_name )); then 
+#            max_lenght_name=${record_length_name}
+#        fi
+#    done
+#    echo $output_record
+#}
+#
