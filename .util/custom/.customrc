@@ -1,2 +1,2 @@
 #!/bin/bash
-source /home/fuch/.util/custom/.folding
+source $HOME/.util/custom/.folding

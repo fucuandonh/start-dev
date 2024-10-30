@@ -1,2 +1,2 @@
 #!/bin/bash
-source /home/fuch/.util/prompt/format/var/.dir
+source $HOME/.util/prompt/format/var/.dir

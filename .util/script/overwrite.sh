@@ -1,4 +1,4 @@
-source /home/fuch/.util/prompt/.promptrc
+source $HOME/.util/prompt/.promptrc
 
 update_prompt() {
     fn=$(folder)

@@ -1,4 +1,4 @@
 #!/bin/bash
-source /home/fuch/.util/prompt/format/const/.chars
-source /home/fuch/.util/prompt/format/const/.colors
-source /home/fuch/.util/prompt/format/const/.icons
+source $HOME/.util/prompt/format/const/.chars
+source $HOME/.util/prompt/format/const/.colors
+source $HOME/.util/prompt/format/const/.icons
